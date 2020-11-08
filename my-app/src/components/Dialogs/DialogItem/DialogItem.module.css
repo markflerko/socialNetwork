@@ -1,0 +1,20 @@
+.dialog {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.dialog__img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.dialog__img-container {
+  margin-right: 10px;
+}
+
+.dialog__name {
+  cursor: pointer;
+}
+

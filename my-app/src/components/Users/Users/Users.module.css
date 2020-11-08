@@ -1,0 +1,38 @@
+* {
+  color: white;
+}
+
+.container {
+  display: grid;
+}
+
+.template {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-gap: 12px;
+}
+
+.profile {
+  padding: 20px 20px;
+}
+
+.profile__img {
+  width: 100px;
+  height: 100px;
+}
+
+.pagination {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-areas: 'p p p p p';
+  grid-gap: 5vw;
+  cursor: pointer;
+}
+
+.selectedPage {
+  font-weight: bold;
+  color: goldenrod;
+  font-size: large;
+}
+

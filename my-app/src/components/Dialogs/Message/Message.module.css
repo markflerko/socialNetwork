@@ -1,0 +1,19 @@
+.messages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.messages__send {
+  align-self: flex-end;
+}
+
+.messages__get {
+  align-self: flex-start;
+}
+
+.messages__get__img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}

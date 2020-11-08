@@ -1,0 +1,38 @@
+
+.sendWriteAndEmoji {
+  grid-area: sendWriteAndEmoji;
+  display: grid;
+  grid-area: 
+  'emoji write send';
+  grid-template-columns: 4fr 12fr 4fr;
+  align-self: center;
+  justify-self: center;
+  grid-gap: 10px;
+}
+
+.emoji {
+  grid-area: 'emoji';
+  align-self: center;
+  justify-self: left;
+}
+
+.write {
+  grid-area: 'write';
+  align-self: center;
+  justify-self: center;
+}
+
+.send {
+  grid-area: 'send';
+  align-self: center;
+  justify-self: right;
+}
+
+.textarea{
+  width: 20vw;
+}
+
+button, textarea {
+  color: black;
+  height: 50px;
+}

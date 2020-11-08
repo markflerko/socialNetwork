@@ -1,0 +1,18 @@
+.ava {
+  grid-area: avaDes;
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+  grid-template-areas: 
+  "ava des";
+}
+
+.ava img {
+  width: 100px !important;
+  height: 100px !important;
+  grid-area: ava;
+}
+
+.ava div {
+  width: 80px;
+  grid-area: des;
+}

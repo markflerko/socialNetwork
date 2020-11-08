@@ -1,0 +1,44 @@
+.content {
+  grid-area: c;
+  background-color: goldenrod;
+  display: grid;
+  grid-template-rows: 300px 100px 1fr;
+  grid-gap: 10px;
+  grid-template-areas:
+    'subHeader'
+    'avaDes'
+    'posts';
+  grid-template-columns: 1fr;
+}
+
+.subHeader {
+  grid-area: subHeader;
+}
+
+/* .ava {
+  grid-area: avaDes;
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+  grid-template-areas: 
+  "ava des";
+}
+
+.ava img {
+  width: 100px !important;
+  height: 100px !important;
+  grid-area: ava;
+}
+
+.ava div {
+  width: 80px;
+  grid-area: des;
+} */
+
+.posts {
+  grid-area: posts;
+}
+
+.content img {
+  height: 300px;
+  width: 100%;
+}
