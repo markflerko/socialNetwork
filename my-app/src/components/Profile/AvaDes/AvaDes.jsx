@@ -7,13 +7,12 @@ const AvaDes = (props) => {
     return <img src={preloader} />
   }
 
-  debugger;
-
   return (
     <div className={classes.ava}>
       <img src={props.profile.photos.large} />
       <div>
-        <iframe src="https://www.google.com/" height="500px" width="500px"></iframe>
+        fuck
+        {/* <iframe src="https://www.google.com/" height="500px" width="500px"></iframe>  */}
       </div>
     </div>
   )
