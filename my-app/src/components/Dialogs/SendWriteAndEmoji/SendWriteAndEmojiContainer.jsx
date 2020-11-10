@@ -13,6 +13,7 @@ let mapDispatchToProps = (dispatch) => {
   return {
     sendMessage: () => {
       let id = window.location.href[window.location.href.length - 1];
+      if (id != +id) return;
       dispatch(addMessage(id))
     },
     updateNewMessageText: (message) => {

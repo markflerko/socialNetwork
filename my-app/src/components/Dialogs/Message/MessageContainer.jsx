@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import Message from './Message';
 
 let mapStateToProps = (state) => {
-  debugger;
   let id = +window.location.href[window.location.href.length - 1];
   return {
     messages: state.dialogsPage.messagesData[id],
