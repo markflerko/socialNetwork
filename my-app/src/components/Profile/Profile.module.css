@@ -2,7 +2,7 @@
   grid-area: c;
   background-color: goldenrod;
   display: grid;
-  grid-template-rows: 300px 100px 1fr;
+  grid-template-rows: 300px 240px 1fr;
   grid-gap: 10px;
   grid-template-areas:
     'subHeader'

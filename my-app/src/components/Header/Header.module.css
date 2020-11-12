@@ -6,3 +6,12 @@
 .header img {
   width: 80px;
 }
+
+.login {
+  float: right;
+  margin: 12px 12px;
+}
+
+.navlink {
+  color: black !important;
+}

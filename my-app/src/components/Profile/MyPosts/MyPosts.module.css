@@ -1,3 +1,15 @@
+.posts {
+  display: grid;
+}
+
 .posts>* {
   color: black;
+}
+
+.btn {
+  margin-top: 4px !important;
+}
+
+.textarea {
+  resize: none;
 }

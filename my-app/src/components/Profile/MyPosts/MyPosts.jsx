@@ -17,13 +17,18 @@ const MyPosts = (props) => {
   }
 
   return (
-    <div className={classes.posts}>posts
+    <div className={classes.posts}>
       <textarea
         onChange={onPostChange}
         ref={newPostElement}
         value={props.newPostText}
+        className={classes.textarea}
       />
-      <button onClick={onAddPost}>add post</button>
+      <button
+        onClick={onAddPost}
+        className={classes.btn}
+      >add post</button>
+      posts
       {postsElements}
     </div>
   )
