@@ -9,7 +9,9 @@ const Header = (props) => {
       <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/800px-React-icon.svg.png' />
 
       <div className={classes.login}>
-        {props.isAuth ? props.login : <NavLink to={'/login'} className={classes.navlink}>🔶 Login</NavLink>}
+        {props.isAuth ?
+          <NavLink to={'/login'} className={classes.navlink}>🔶 {props.login} </NavLink> :
+          <NavLink to={'/login'} className={classes.navlink}>🔶 Login</NavLink>}
       </div>
 
     </header>
