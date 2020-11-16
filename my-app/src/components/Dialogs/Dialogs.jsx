@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
-import { Route, BrowserRouter } from 'react-router-dom';
+import { Route, BrowserRouter, Redirect } from 'react-router-dom';
 import SendWriteAndEmojiContainer from './SendWriteAndEmoji/SendWriteAndEmojiContainer';
 import MessageContainer from './Message/MessageContainer';
 
@@ -22,6 +22,8 @@ const Dialogs = (props) => {
       </div>
     )
   })
+
+  if(!props.isAuth) return <Redirect to={'./Login'} />;
 
   return (
     <BrowserRouter>
