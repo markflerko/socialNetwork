@@ -22,7 +22,7 @@ const App = (props) => {
           <Route path='/Profile/:userId?'>
             <ProfileContainer />
           </Route>
-          <Route path='/Dialogs'> 
+          <Route path='/Dialogs/:convnId?'> 
             <DialogsContainer
               dialogsPage={props.state.dialogsPage}
               dispatch={props.dispatch}

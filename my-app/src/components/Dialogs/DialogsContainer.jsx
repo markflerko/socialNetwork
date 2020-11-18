@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { withAuthRedicrect } from '../../hoc/withAuthRedirect';
 import Dialogs from './Dialogs';
 
 class DialogsContainer extends React.Component {
@@ -8,10 +10,8 @@ class DialogsContainer extends React.Component {
   }
 }
 
-let mapStateToProps = (state) => {
-  return {
-    isAuth: state.auth.isAuth
-  }
-}
+export default compose(
+  connect(),
+  withAuthRedicrect
+)(DialogsContainer);
 
-export default connect(mapStateToProps)(DialogsContainer);

@@ -23,8 +23,6 @@ const Dialogs = (props) => {
     )
   })
 
-  if(!props.isAuth) return <Redirect to={'./Login'} />;
-
   return (
     <BrowserRouter>
       <div className={classes.dialogs}>
