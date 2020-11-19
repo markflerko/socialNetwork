@@ -12,7 +12,6 @@ class ProfileContainer extends React.Component {
   }
 
   render() {
-    debugger;
     return (
       <Profile {...this.props} />
     )
@@ -25,6 +24,5 @@ const mapStateToProps = (state) => ({
 
 export default compose(
   connect(mapStateToProps, { setUser }),
-  withRouter,
-  withAuthRedicrect
+  withRouter
 )(ProfileContainer);

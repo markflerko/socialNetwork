@@ -3,7 +3,8 @@
   display: grid;
   grid-template-columns: 2fr 10fr;
   grid-template-areas: 
-  "ava des";
+  "ava status"
+  "des des";
 }
 
 .ava img {
@@ -12,7 +13,14 @@
   grid-area: ava;
 }
 
-.ava div {
-  width: 80px;
+.about {
   grid-area: des;
+}
+
+.status {
+  grid-area: status;
+}
+
+.status input {
+  color: black;
 }
