@@ -1,9 +1,9 @@
 import React from 'react';
-import classes from './Dialogs.module.css';
+import { BrowserRouter, Route } from 'react-router-dom';
 import DialogItem from './DialogItem/DialogItem';
-import { Route, BrowserRouter, Redirect } from 'react-router-dom';
-import SendWriteAndEmojiContainer from './SendWriteAndEmoji/SendWriteAndEmojiContainer';
+import classes from './Dialogs.module.css';
 import MessageContainer from './Message/MessageContainer';
+import SendWriteAndEmojiContainer from './SendWriteAndEmoji/SendWriteAndEmojiContainer';
 
 const Dialogs = (props) => {
   let dialogsListElements = props.dialogsPage.dialogsData.map((i, k) => {

@@ -1,37 +1,36 @@
 import React from 'react';
+import { Field, reduxForm } from 'redux-form';
 import classes from './SendWriteAndEmoji.module.css';
 
 const SendWriteAndEmoji = (props) => {
-  let newMessageElement = React.createRef();
-
   const onSendMessage = () => {
     props.sendMessage();
   }
 
-  let onMessageChange = () => {
-    let message  = newMessageElement.current.value;
-    props.updateNewMessageText(message);
-  }
-
   return (
-    <div className={classes.sendWriteAndEmoji} >
+    <form
+      className={classes.sendWriteAndEmoji}
+      onSubmit={props.handleSubmit}
+    >
       <button className={classes.emoji}>emoji</button>
-      <textarea
-        onChange={onMessageChange}
-        className={`${classes.textarea} ${classes.write}`}
-        placeholder="write him a deal)))"
-        ref={newMessageElement}
-        value={props.messageText}
-      >
-      </textarea>
+      <Field
+        component='textarea'
+        name='newMessage'
+        placeholder='enter your message'
+      />
+
       <button
         className={classes.send}
         onClick={onSendMessage}
       >
         send
         </button>
-    </div >
+    </form >
   )
 }
 
-export default SendWriteAndEmoji;
+const SendWriteAndEmojiFormRedux = reduxForm({
+  form: 'SendWriteAndEmojiForm'
+})(SendWriteAndEmoji);
+
+export default SendWriteAndEmojiFormRedux;

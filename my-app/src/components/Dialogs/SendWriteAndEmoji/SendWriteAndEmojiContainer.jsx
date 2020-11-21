@@ -1,7 +1,22 @@
 import React from 'react';
-import { addMessage, updateNewMessageActionCreator } from '../../../redux/dialogsReducer';
-import {connect} from 'react-redux';
-import SendWriteAndEmoji from './SendWriteAndEmoji';
+import { connect } from 'react-redux';
+import { addMessage } from '../../../redux/dialogsReducer';
+import SendWriteAndEmojiFormRedux from './SendWriteAndEmoji';
+
+class SendWriteAndEmojiContainer extends React.Component {
+  addNewMessage = (values) => {
+    this.props.sendMessage(values.newMessage)
+  }
+
+  render() {
+    return (
+      <SendWriteAndEmojiFormRedux
+        {...this.props}
+        onSubmit={this.addNewMessage}
+      />
+    )
+  }
+}
 
 let mapStateToProps = (state) => {
   return {
@@ -11,17 +26,13 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    sendMessage: () => {
+    sendMessage: (newMessage) => {
       let id = window.location.href[window.location.href.length - 1];
       if (id != +id) return;
-      dispatch(addMessage(id))
-    },
-    updateNewMessageText: (message) => {
-      dispatch(updateNewMessageActionCreator(message))
+      dispatch(addMessage(id, newMessage))
     }
   }
 }
 
-const SendWriteAndEmojiContainer = connect(mapStateToProps, mapDispatchToProps)(SendWriteAndEmoji);
+export default connect(mapStateToProps, mapDispatchToProps)(SendWriteAndEmojiContainer);
 
-export default SendWriteAndEmojiContainer;
