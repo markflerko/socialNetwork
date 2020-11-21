@@ -15,7 +15,10 @@ const AvaDes = (props) => {
         <iframe src={`https://social-network.samuraijs.com/api/1.0/profile/${props.profile.userId}`} width="400" height="auto" ></iframe>
       </div>
       <div className={classes.status}>
-        <ProfileStatus status={'hello'} />
+        <ProfileStatus
+          status={props.status}
+          updateStatus={props.updateStatus}
+        />
       </div>
     </div>
   )

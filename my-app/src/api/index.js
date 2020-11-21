@@ -15,12 +15,6 @@ const usersAPI = {
         return response.data
       })
   },
-  setUsers(userId) {
-    return instance.get(`profile/${userId}`)
-      .then(response => {
-        return response.data
-      })
-  },
   auth() {
     return instance.get(`auth/me`)
       .then(response => {
@@ -38,7 +32,25 @@ const usersAPI = {
       .then(response => {
         return response.data
       })
-  }
+  },
+  setUsers(userId) {
+    return profileAPI.setUsers(userId);
+  },
+}
+
+export const profileAPI = {
+  setUsers(userId) {
+    return instance.get(`profile/${userId}`)
+      .then(response => {
+        return response.data
+      })
+  },
+  getStatus(userId) {
+    return instance.get(`profile/status/${userId}`)
+  },
+  updateStatus(status) {
+    return instance.put(`profile/status`, { status: status })
+  },
 }
 
 
