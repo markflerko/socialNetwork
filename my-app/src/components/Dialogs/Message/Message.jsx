@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './Message.module.css';
 
 const Message = (props) => {
-  debugger;
   return (
     <div className={classes.messages} >
       {props.messages.map((item) => (
