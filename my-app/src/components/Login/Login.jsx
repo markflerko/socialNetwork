@@ -5,6 +5,8 @@ import { Input } from '../common/FormsControls/FormsControls';
 import required from '../../utils/validators/required';
 import { connect } from 'react-redux';
 import { login } from '../../redux/authReducer'
+import { Redirect } from 'react-router-dom';
+import styles from '../../components/common/FormsControls/FormsControls.module.css';
 
 const LoginForm = (props) => {
   return (
@@ -33,6 +35,9 @@ const LoginForm = (props) => {
           validate={[required]}
         />
       </div>
+      {props.error && <div className={styles.formSummaryError}>
+        {props.error}
+      </div>}
       <div><button>Sign in</button></div>
     </form>
   )
@@ -43,8 +48,13 @@ const ReduxLoginForm = reduxForm({
 })(LoginForm)
 
 const Login = (props) => {
+
   const onSubmit = (formData) => {
     props.login(formData.email, formData.password, formData.rememberMe)
+  }
+
+  if (props.isAuth) {
+    return <Redirect to={'/Profile'} />
   }
 
   return (
@@ -54,5 +64,7 @@ const Login = (props) => {
     </div>
   )
 }
-
-export default connect(null, { login })(Login);
+const mapStateToProps = (state) => ({
+  isAuth: state.auth.isAuth
+})
+export default connect(mapStateToProps, { login })(Login);
