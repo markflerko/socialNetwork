@@ -10,8 +10,12 @@ class DialogsContainer extends React.Component {
   }
 }
 
+let mapStateToProps = (state) => ({
+  dialogsPage: state.dialogsPage
+})
+
 export default compose(
-  connect(),
+  connect(mapStateToProps),
   withAuthRedicrect
 )(DialogsContainer);
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Navbar.module.css'
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const Navbar = (props) => {
   return (
@@ -16,7 +17,7 @@ const Navbar = (props) => {
       <div className={classes.nav__friends}>
         FRIENDS 🔂
         <br/>
-        {props.state.friendsOnline.map(i =>
+        {props.friendsOnline.map(i =>
         <span>
           <img
             className={`${classes.nav__friends__img} ${classes['nav__friends__img-container']}`}
@@ -29,4 +30,8 @@ const Navbar = (props) => {
   )
 }
 
-export default Navbar;
+let mapStateToProps = (state) => ({
+  friendsOnline: state.sidebar.friendsOnline,
+});
+
+export default connect(mapStateToProps)(Navbar);
