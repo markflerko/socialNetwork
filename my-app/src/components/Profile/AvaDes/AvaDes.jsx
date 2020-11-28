@@ -1,7 +1,7 @@
 import React from 'react';
-import classes from './AvaDes.module.css';
 import preloader from '../../../assets/img/preloader.svg';
-import ProfileStatus from './ProfileStatus'
+import classes from './AvaDes.module.css';
+import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 
 const AvaDes = (props) => {
   if (!props.profile) {
@@ -15,7 +15,7 @@ const AvaDes = (props) => {
         <iframe src={`https://social-network.samuraijs.com/api/1.0/profile/${props.profile.userId}`} width="400" height="auto" ></iframe>
       </div>
       <div className={classes.status}>
-        <ProfileStatus
+        <ProfileStatusWithHooks
           status={props.status}
           updateStatus={props.updateStatus}
         />
