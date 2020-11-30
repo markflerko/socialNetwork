@@ -1,7 +1,7 @@
 import { stopSubmit } from "redux-form";
 import usersAPI, { authAPI } from "../api";
 
-const SET_USER_DATA = 'SET_USER_DATA';
+const SET_USER_DATA = 'samurai-network/auth/SET_USER_DATA';
 
 let initialState = {
   email: null,
@@ -29,37 +29,33 @@ export const setAuthUserData = (email, id, login, isAuth) => ({
   payload: { email, id, login, isAuth }
 });
 
-export const auth = () => (dispatch) => {
-  return usersAPI.auth().then(data => {
-    if (data.resultCode === 0) {
-      let { email, id, login } = data.data;
-      dispatch(setAuthUserData(email, id, login, true));
-    }
-  });
-}
+export const auth = () => async (dispatch) => {
+  let response = await authAPI.me();
 
-export const login = (email, password, rememberMe) => {
-
-  return (dispatch) => {
-    authAPI.login(email, password, rememberMe).then(data => {
-      if (data.data.resultCode === 0) {
-        dispatch(auth())
-      } else {
-        let message = data.data.messages.length > 0 ? data.data.messages[0] : 'some error';
-        dispatch(stopSubmit('login', { message }));
-      }
-    });
+  if (response.data.resultCode === 0) {
+    let { email, id, login } = response.data.data;
+    dispatch(setAuthUserData(email, id, login, true));
   }
 }
 
-export const logout = () => {
-  return (dispatch) => {
-    authAPI.logout().then(data => {
-      if (data.resultCode === 0) {
-        dispatch(setAuthUserData(null, null, null, false))
-      }
-    });
+export const login = (email, password, rememberMe) => async (dispatch) => {
+  let response = await authAPI.login(email, password, rememberMe);
+
+  if (response.data.resultCode === 0) {
+    dispatch(auth())
+  } else {
+    let message = response.data.messages.length > 0 ? response.data.messages[0] : 'some error';
+    dispatch(stopSubmit('login', { message }));
   }
 }
+
+export const logout = () => async (dispatch) => {
+  let response = authAPI.logout();
+
+  if (response.resultCode === 0) {
+    dispatch(setAuthUserData(null, null, null, false))
+  }
+}
+
 
 export default authReducer;

@@ -21,32 +21,30 @@ class App extends React.Component {
   }
 
   render() {
-    if(!this.props.initialized) {
+    if (!this.props.initialized) {
       return <img src={preloader} />
     }
 
     return (
-      <BrowserRouter>
-        <div className="app-wrapper">
-          <HeaderContainer />
-          <Navbar />
-          <div className="app-wrapper-content">
-            <Route path='/Profile/:userId?'>
-              <ProfileContainer />
-            </Route>
-            <Route path='/Dialogs/:convnId?'>
-              <DialogsContainer />
-            </Route>
-            <Route path='/Users' >
-              <UsersContainer />
-            </Route>
-            <Route path='/News' component={News} />
-            <Route path='/Login' component={Login} />
-            <Route path='/Music' component={Music} />
-            <Route path='/Settings' component={Settings} />
-          </div>
+      <div className="app-wrapper">
+        <HeaderContainer />
+        <Navbar />
+        <div className="app-wrapper-content">
+          <Route path='/Profile/:userId?'>
+            <ProfileContainer />
+          </Route>
+          <Route path='/Dialogs/:convnId?'>
+            <DialogsContainer />
+          </Route>
+          <Route path='/Users' >
+            <UsersContainer />
+          </Route>
+          <Route path='/News' component={News} />
+          <Route path='/Login' component={Login} />
+          <Route path='/Music' component={Music} />
+          <Route path='/Settings' component={Settings} />
         </div>
-      </BrowserRouter>
+      </div>
     )
   }
 }
