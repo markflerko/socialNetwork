@@ -10,7 +10,7 @@ import {
   followUser,
   unfollowUser
 } from "../../redux/usersReducer";
-import Users from './Users';
+import Users from './Users/Users';
 import {
   getUsers,
   getPageSize,
@@ -43,16 +43,6 @@ class UsersContainer extends React.Component {
   }
 }
 
-// let mapStateToProps = (state) => {
-//   return {
-//     users: state.usersPage.users,
-//     pageSize: state.usersPage.pageSize,
-//     totalUsersCount: state.usersPage.totalUsersCount,
-//     currentPage: state.usersPage.currentPage,
-//     isFetching: state.usersPage.isFetching,
-//     followingProgress: state.usersPage.followingProgress,
-//   }
-// }
 let mapStateToProps = (state) => {
   return {
     users: getUsers(state),

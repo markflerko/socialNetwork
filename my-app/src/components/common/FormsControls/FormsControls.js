@@ -1,13 +1,13 @@
 import React from 'react';
 import classes from './FormsControls.module.css';
 
-const FormControl = ({ input, meta, element, ...props }) => {
-  const hasError = meta.touched && meta.error;
+const FormControl = ({ input, meta: { touched, error }, element, children }) => {
+  const hasError = touched && error;
 
   return (
     <div className={classes.formControl + ' ' + (hasError && classes.error)} >
-      {props.children}
-      {hasError && <span>{meta.error}</span>}
+      {children}
+      {hasError && <span>{error}</span>}
     </div >
   )
 }
