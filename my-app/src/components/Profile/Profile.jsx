@@ -6,6 +6,7 @@ import SubHeader from './SubHeader/SubHeader';
 
 
 const Profile = (props) => {
+  debugger;
   return (
     <div className={classes.content}>
       <SubHeader />
