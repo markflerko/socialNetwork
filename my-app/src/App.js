@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Route } from 'react-router-dom';
 import { compose } from 'redux';
 import './App.css';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
 import Music from './components/Music/Music';
@@ -16,6 +15,9 @@ import { initializeApp } from './redux/appReducer';
 import preloader from '../src/assets/img/preloader.svg';
 import store from './redux/reduxStore';
 import { Provider } from 'react-redux';
+import withSuspense from './hoc/withSuspense';
+
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 
 class App extends React.Component {
   componentDidMount() {
@@ -36,7 +38,7 @@ class App extends React.Component {
             <ProfileContainer />
           </Route>
           <Route path='/Dialogs/:convnId?'>
-            <DialogsContainer />
+            {withSuspense(DialogsContainer)}
           </Route>
           <Route path='/Users' >
             <UsersContainer />
@@ -62,13 +64,13 @@ let AppContainer = compose(
 let SamuraiJsApp = (props) => {
   return (
     <React.StrictMode>
-      <BrowserRouter>
+      <HashRouter>
         <Provider store={store} >
           <AppContainer state={store.getState()} />
         </Provider>
-      </BrowserRouter>
+      </HashRouter>
     </React.StrictMode>
-  ) 
+  )
 }
 
 export default SamuraiJsApp;
