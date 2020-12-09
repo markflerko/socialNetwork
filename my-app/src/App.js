@@ -16,8 +16,9 @@ import preloader from '../src/assets/img/preloader.svg';
 import store from './redux/reduxStore';
 import { Provider } from 'react-redux';
 import withSuspense from './hoc/withSuspense';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
 
-const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+// const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 
 class App extends React.Component {
   componentDidMount() {
@@ -38,8 +39,11 @@ class App extends React.Component {
             <ProfileContainer />
           </Route>
           <Route path='/Dialogs/:convnId?'>
-            {withSuspense(DialogsContainer)}
+            <DialogsContainer />
           </Route>
+{/*           <Route path='/Dialogs/:convnId?'>
+            {withSuspense(DialogsContainer)}
+          </Route> */}
           <Route path='/Users' >
             <UsersContainer />
           </Route>

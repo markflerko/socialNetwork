@@ -1,10 +1,15 @@
 .ava {
   grid-area: avaDes;
   display: grid;
-  grid-template-columns: 2fr 10fr;
+  grid-template-columns: 4fr 10fr;
   grid-template-areas: 
   "ava status"
+  "input status"
   "des des";
+}
+
+.uploadImage {
+  grid-area: input;
 }
 
 .ava img {
@@ -23,4 +28,9 @@
 
 .status input {
   color: black;
+}
+
+.profileImage {
+  width: 200px;
+  padding-bottom: 4px;
 }

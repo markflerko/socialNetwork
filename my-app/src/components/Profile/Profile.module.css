@@ -2,7 +2,7 @@
   grid-area: c;
   background-color: goldenrod;
   display: grid;
-  grid-template-rows: 300px 240px 1fr;
+  grid-template-rows: 320px 320px 1fr;
   grid-gap: 10px;
   grid-template-areas:
     'subHeader'
@@ -15,24 +15,6 @@
   grid-area: subHeader;
 }
 
-/* .ava {
-  grid-area: avaDes;
-  display: grid;
-  grid-template-columns: 2fr 10fr;
-  grid-template-areas: 
-  "ava des";
-}
-
-.ava img {
-  width: 100px !important;
-  height: 100px !important;
-  grid-area: ava;
-}
-
-.ava div {
-  width: 80px;
-  grid-area: des;
-} */
 
 .posts {
   grid-area: posts;

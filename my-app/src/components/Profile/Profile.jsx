@@ -6,14 +6,16 @@ import SubHeader from './SubHeader/SubHeader';
 
 
 const Profile = (props) => {
-  debugger;
   return (
     <div className={classes.content}>
       <SubHeader />
       <AvaDes
+        isOwner={props.isOwner}
         profile={props.profile}
         status={props.status}
         updateStatus={props.updateStatus}
+        savePhoto={props.savePhoto}
+
       />
       <MyPostsContainer />
     </div>
