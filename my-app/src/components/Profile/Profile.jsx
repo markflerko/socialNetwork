@@ -1,9 +1,8 @@
-import React from 'react';
-import AvaDes from './AvaDes/AvaDes';
-import MyPostsContainer from './MyPosts/MyPostsContainer';
-import classes from './Profile.module.css';
-import SubHeader from './SubHeader/SubHeader';
-
+import React from "react";
+import AvaDes from "./AvaDes/AvaDes";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
+import classes from "./Profile.module.css";
+import SubHeader from "./SubHeader/SubHeader";
 
 const Profile = (props) => {
   return (
@@ -15,11 +14,11 @@ const Profile = (props) => {
         status={props.status}
         updateStatus={props.updateStatus}
         savePhoto={props.savePhoto}
-
+        saveProfile={props.saveProfile}
       />
       <MyPostsContainer />
     </div>
-  )
-}
+  );
+};
 
 export default Profile;

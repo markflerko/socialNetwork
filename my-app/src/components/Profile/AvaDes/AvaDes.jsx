@@ -1,22 +1,39 @@
-import React from 'react';
-import preloader from '../../../assets/img/preloader.svg';
-import classes from './AvaDes.module.css';
+import React from "react";
+import preloader from "../../../assets/img/preloader.svg";
+import classes from "./AvaDes.module.css";
 // import ProfileStatus from './ProfileStatus';
-import ProfileStatusWithHooks from './ProfileStatusWithHooks';
-import userPhoto from '../../../assets/img/user.png';
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
+import userPhoto from "../../../assets/img/user.png";
+import { useState } from "react";
+import ProfileDataForm from "./ProfileDataForm";
 
-const AvaDes = ({ profile, status, updateStatus, isOwner, savePhoto }) => {
-  debugger;
+const AvaDes = ({
+  profile,
+  status,
+  updateStatus,
+  isOwner,
+  savePhoto,
+  saveProfile,
+}) => {
+  const [editMode, setEditMode] = useState(false);
 
   if (!profile) {
-    return <img src={preloader} />
+    return <img src={preloader} />;
   }
 
   const onMainPhotoSelected = (e) => {
     if (e.target.files.length) {
       savePhoto(e.target.files[0]);
     }
-  }
+  };
+
+  const onSubmit = (formData) => {
+    saveProfile(formData).then(
+      () => {
+        setEditMode(false);
+      }
+    );
+  };
 
   return (
     <div className={classes.ava}>
@@ -24,33 +41,52 @@ const AvaDes = ({ profile, status, updateStatus, isOwner, savePhoto }) => {
         src={profile.photos.large || userPhoto}
         className={classes.profileImage}
       />
-      {isOwner &&
+      {isOwner && (
         <input
-          type={'file'}
+          type={"file"}
           className={classes.uploadImage}
           onChange={onMainPhotoSelected}
-        />}
+        />
+      )}
       <div className={classes.about}>
-        <ProfileData userId={profile.userId} />
+        {editMode ? (
+          <ProfileDataForm
+            initialValues={profile}
+            profile={profile}
+            onSubmit={onSubmit}
+          />
+        ) : (
+          <ProfileData
+            userId={profile.userId}
+            isOwner={isOwner}
+            goToEditMode={() => {
+              setEditMode(true);
+            }}
+          />
+        )}
       </div>
       <div className={classes.status}>
-        <ProfileStatusWithHooks
-          status={status}
-          updateStatus={updateStatus}
-        />
+        <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
       </div>
     </div>
-  )
-}
+  );
+};
 
-const ProfileData = ({ userId }) => {
+const ProfileData = ({ userId, isOwner, goToEditMode }) => {
   return (
-    <iframe
-      src={`https://social-network.samuraijs.com/api/1.0/profile/${userId}`}
-      width="400"
-      height="auto"
-    ></iframe>
-  )
-}
+    <>
+      <iframe
+        src={`https://social-network.samuraijs.com/api/1.0/profile/${userId}`}
+        width="400"
+        height="auto"
+      ></iframe>
+      {isOwner && (
+        <span>
+          <button onClick={goToEditMode}>edit</button>
+        </span>
+      )}
+    </>
+  );
+};
 
-export default AvaDes; 
+export default AvaDes;
