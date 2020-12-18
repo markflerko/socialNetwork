@@ -1,6 +1,6 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
-import classes from "./AvaDes.module.css";
+import classes from "./ProfileDataForm.module.css";
 import { Input, Textarea } from "../../common/FormsControls/FormsControls";
 
 const ProfileDataForm = ({ handleSubmit, profile, error }) => {
