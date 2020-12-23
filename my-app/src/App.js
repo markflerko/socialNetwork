@@ -46,7 +46,7 @@ class App extends React.Component {
               {withSuspense(DialogsContainer)}
             </Route>
             <Route path='/Users' >
-              <UsersContainer />
+              <UsersContainer pageTitle={'Samurai'}/>
             </Route>
             <Route path='/News' component={News} />
             <Route path='/Music' component={Music} />

@@ -1,25 +1,36 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import user from '../../../assets/img/user.png';
-import Paginator from '../../common/Paginator';
+import { UserType } from '../../../types/types';
+// import Paginator from '../../common/Paginator';
+import Paginator from '../../common/Paginator/Paginator';
 import User from './User';
 import classes from './Users.module.css';
 
-let Users = ({
+type PropsType = {
+  users: Array<UserType>,
+  pageSize: number,
+  totalUsersCount: number,
+  currentPage: number,
+  followingProgress: Array<number>,
+  onPageChanged: (pageNumber: number) => void,
+  unfollowUser: (id: number) => void,
+  followUser: (id: number) => void,
+}
+
+let Users: React.FC<PropsType> = ({
+  users,
   totalUsersCount,
   pageSize,
   currentPage,
-  onPageChanged,
-  users,
   followingProgress,
   unfollowUser,
   followUser,
-  ...props }) => {
+  onPageChanged
+}) => {
 
   return (
     <div className={classes.container}>
       <Paginator
-        totalUsersCount={totalUsersCount}
+        totalItemsCount={totalUsersCount}
         pageSize={pageSize}
         currentPage={currentPage}
         onPageChanged={onPageChanged}

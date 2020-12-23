@@ -1,4 +1,4 @@
-const ADD_MESSAGE = "ADD_MESSAGE";
+import { InferActionsTypes } from "./reduxStore";
 
 type DialogsType = {
   id: number;
@@ -6,7 +6,7 @@ type DialogsType = {
   avaImg: string;
 };
 
-type PropType = 'get' | 'send'
+type PropType = "get" | "send";
 
 type MessageType = {
   (propName: PropType): string;
@@ -14,12 +14,16 @@ type MessageType = {
 };
 
 interface MessagesType {
-  [propName: number] :Array<MessageType>
-};
+  [propName: number]: Array<MessageType>;
+}
 
 let initialState = {
   dialogsData: [
-    { id: 1, name: "Dimych", avaImg: "https://i.insider.com/5f341b9e5fa9a45644447e89?width=856" },
+    {
+      id: 1,
+      name: "Dimych",
+      avaImg: "https://i.insider.com/5f341b9e5fa9a45644447e89?width=856",
+    },
     {
       id: 2,
       name: "Egor",
@@ -81,11 +85,12 @@ let initialState = {
   } as any,
 };
 
-export type initialStateType = typeof initialState;
-
-const dialogsReducer = (state = initialState, action: any): initialStateType => {
+const dialogsReducer = (
+  state = initialState,
+  action: ActionsType,
+): initialStateType => {
   switch (action.type) {
-    case ADD_MESSAGE: {
+    case "ADD_MESSAGE": {
       let stateCopy = { ...state };
 
       stateCopy.messagesData[action.id] = [...state.messagesData[action.id]];
@@ -106,16 +111,16 @@ const dialogsReducer = (state = initialState, action: any): initialStateType => 
   }
 };
 
-type addMessageActionType = {
-  type: typeof ADD_MESSAGE;
-  id: number;
-  newMessage: string;
+export const actions = {
+  addMessage: (id: number, newMessage: string) =>
+    ({
+      type: "ADD_MESSAGE",
+      id: id,
+      newMessage: newMessage,
+    } as const),
 };
 
-export const addMessage = (id: number, newMessage: string): addMessageActionType => ({
-  type: ADD_MESSAGE,
-  id: id,
-  newMessage: newMessage,
-});
-
 export default dialogsReducer;
+
+export type initialStateType = typeof initialState;
+type ActionsType = InferActionsTypes<typeof actions>;

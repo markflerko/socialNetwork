@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addMessage } from '../../../redux/dialogsReducer';
+import { actions } from '../../../redux/dialogsReducer';
 import SendWriteAndEmojiFormRedux from './SendWriteAndEmoji';
 
 class SendWriteAndEmojiContainer extends React.Component {
@@ -29,7 +29,7 @@ let mapDispatchToProps = (dispatch) => {
     sendMessage: (newMessage) => {
       let id = window.location.href[window.location.href.length - 1];
       if (id != +id) return;
-      dispatch(addMessage(id, newMessage))
+      dispatch(actions.addMessage(id, newMessage))
     }
   }
 }
