@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import classes from './DialogItem.module.css';
 import { NavLink } from 'react-router-dom';
 
-const DialogItem = props => {
+const DialogItem = (props: any) => {
   const [active, setActive] = useState('goldenrod')
 
   let path = '/Dialogs/' + props.id;

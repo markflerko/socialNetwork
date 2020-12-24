@@ -3,4 +3,5 @@
 3. login page validation
 4. profile - update photo, change всё отвалилось
 5. тесты дед аутсайд
-6. почему-то стал отрисовываться месседж контейнер на пустом айдишнике
+6. //@ts-ignore
+7. any types clean

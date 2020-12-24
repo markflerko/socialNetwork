@@ -3,6 +3,7 @@ import { Field, reduxForm } from "redux-form";
 import classes from "./ProfileDataForm.module.css";
 import { Input, Textarea } from "../../common/FormsControls/FormsControls";
 
+//@ts-ignore
 const ProfileDataForm = ({ handleSubmit, profile, error }) => {
   return (
     <form onSubmit={handleSubmit}>
@@ -12,26 +13,11 @@ const ProfileDataForm = ({ handleSubmit, profile, error }) => {
       {error && <div className={classes.error}>{error}</div>}
       <div>
         <b>Full Name</b>
-        {
-          <Field
-            placeholder={"Full Name"}
-            name={"fullName"}
-            validate={[]}
-            component={Input}
-          />
-        }
+        {<Field placeholder={"Full Name"} name={"fullName"} validate={[]} component={Input} />}
       </div>
       <div>
         <b>Looking for a job</b>
-        {
-          <Field
-            placeholder={""}
-            name={"lookingForAJob"}
-            validate={[]}
-            component={Input}
-            type={"checkbox"}
-          />
-        }
+        {<Field placeholder={""} name={"lookingForAJob"} validate={[]} component={Input} type={"checkbox"} />}
       </div>
       <div>
         <b>My professional skills</b>
@@ -46,14 +32,7 @@ const ProfileDataForm = ({ handleSubmit, profile, error }) => {
       </div>
       <div>
         <b>About me</b>
-        {
-          <Field
-            placeholder={"about me"}
-            name={"aboutMe"}
-            validate={[]}
-            component={Textarea}
-          />
-        }
+        {<Field placeholder={"about me"} name={"aboutMe"} validate={[]} component={Textarea} />}
       </div>
       <div>
         <b>Contacts</b>
@@ -62,12 +41,7 @@ const ProfileDataForm = ({ handleSubmit, profile, error }) => {
             <div key={key} className={classes.contact}>
               <b>
                 {key}:
-                <Field
-                  placeholder={key}
-                  name={"contacts." + key}
-                  validate={[]}
-                  component={Input}
-                />
+                <Field placeholder={key} name={"contacts." + key} validate={[]} component={Input} />
               </b>
             </div>
           );
@@ -77,8 +51,7 @@ const ProfileDataForm = ({ handleSubmit, profile, error }) => {
   );
 };
 
-const ProfileDataReduxForm = reduxForm({ form: "edit_profile" })(
-  ProfileDataForm,
-);
+//@ts-ignore
+const ProfileDataReduxForm = reduxForm({ form: "edit_profile" })(ProfileDataForm);
 
 export default ProfileDataReduxForm;

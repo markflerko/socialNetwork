@@ -4,7 +4,7 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import classes from "./Profile.module.css";
 import SubHeader from "./SubHeader/SubHeader";
 
-const Profile = (props) => {
+const Profile = (props: any) => {
   return (
     <div className={classes.content}>
       <SubHeader />

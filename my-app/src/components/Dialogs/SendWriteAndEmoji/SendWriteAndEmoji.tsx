@@ -9,7 +9,12 @@ import classes from './SendWriteAndEmoji.module.css';
 let maxLength = maxLegnthCreator(10);
 let minLength = minLengthCreator(1);
 
-const SendWriteAndEmoji = (props) => {
+type OwnPropsTypes = {
+  sendMessage: () => void
+  handleSubmit: () => void
+}
+
+const SendWriteAndEmoji: React.FC<OwnPropsTypes> = (props) => {
   const onSendMessage = () => {
     props.sendMessage();
   }
@@ -39,6 +44,7 @@ const SendWriteAndEmoji = (props) => {
 
 const SendWriteAndEmojiFormRedux = reduxForm({
   form: 'SendWriteAndEmojiForm'
+  //@ts-ignore
 })(SendWriteAndEmoji);
 
 export default SendWriteAndEmojiFormRedux;

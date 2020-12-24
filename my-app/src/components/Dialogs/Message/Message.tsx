@@ -1,9 +1,10 @@
 import React from 'react';
 import classes from './Message.module.css';
 
-const Message = (props) => {
+const Message = (props: any) => {
   return (
     <div className={classes.messages} >
+      {/* @ts-ignore */}
       {props.messages.map((item) => (
         <>
           {

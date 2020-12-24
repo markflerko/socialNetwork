@@ -2,5 +2,5 @@
   "tabWidth": 2,
   "trailingComma": "all",
   "jsxBracketSameLine": false,
-  "printWidth": 80
+  "printWidth": 120
 }
