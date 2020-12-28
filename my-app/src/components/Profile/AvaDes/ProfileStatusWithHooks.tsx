@@ -1,6 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, MouseEvent, useEffect, useState } from "react";
 
-const ProfileStatusWithHooks = (props: any) => {
+type PropsType = {
+  status: string;
+  updateStatus: (status: string) => void
+};
+
+const ProfileStatusWithHooks: React.FC<PropsType> = (props) => {
   let [editMode, setEditMode] = useState(false);
   let [status, setStatus] = useState(props.status);
 
@@ -17,8 +22,7 @@ const ProfileStatusWithHooks = (props: any) => {
     props.updateStatus(status);
   };
 
-//@ts-ignore
-  const onStatusChange = (e) => {
+  const onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
     setStatus(e.currentTarget.value);
   };
 
@@ -36,7 +40,7 @@ const ProfileStatusWithHooks = (props: any) => {
             value={status}
             onChange={onStatusChange}
             autoFocus={true}
-            //@ts-ignore
+            /* @ts-ignore */
             onDoubleClick="this.select()"
           />
         </div>

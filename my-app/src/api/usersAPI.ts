@@ -1,9 +1,9 @@
 import { GetItemsType, instance, APIResponseType } from "./index";
 
 export const usersAPI = {
-  getUsers(pageNumber = 1, pageSize = 5) {
+  getUsers(pageNumber = 1, pageSize = 5, term: string = '', friend: null | boolean = null) {
     return instance
-      .get<GetItemsType>(`users?page=${pageNumber}&count=${pageSize}`)
+      .get<GetItemsType>(`users?page=${pageNumber}&count=${pageSize}&term=${term}` + (friend===null ? '' : `&friend=${friend}`))
       .then((res) => res.data);
   },
   auth() {

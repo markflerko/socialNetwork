@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { AppStateType } from "../../redux/reduxStore";
 
-const Navbar = (props: any) => {
+const Navbar: React.FC = (props) => {
   return (
     <div className={classes.nav}>
       <nav className={classes.nav__links}>

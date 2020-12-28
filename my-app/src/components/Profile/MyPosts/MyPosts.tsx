@@ -1,5 +1,6 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+import { PostsType } from "../../../types/types";
 import maxLegnthCreator from "../../../utils/validators/maxLengthCreator";
 import minLengthCreator from "../../../utils/validators/minLengthCreator";
 import required from "../../../utils/validators/required";
@@ -31,8 +32,15 @@ type addPostValueType = {
   newPostText: string;
 };
 
-const MyPosts = (props: any) => {
-  //@ts-ignore
+export type StatePropsType = {
+  posts: Array<PostsType>
+}
+
+export type DispatchPropsType = {
+  addPost: (newPostText: string) => void
+}
+
+const MyPosts: React.FC<StatePropsType & DispatchPropsType> = (props) => {
   let postsElements = props.posts.map((post) => (
     <Post message={post.message} likes={post.likesCount} />
   ));
@@ -49,5 +57,7 @@ const MyPosts = (props: any) => {
     </div>
   );
 };
+
+const MyPostsMemorized = React.memo(MyPosts)
 
 export default MyPosts;

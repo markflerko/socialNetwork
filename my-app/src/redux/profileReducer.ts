@@ -5,8 +5,8 @@ import { profileAPI } from "../api/profileAPI";
 
 let initialState = {
   posts: [
-    { id: 1, message: "Hi, how are you?", likesCount: "20" },
-    { id: 2, message: "Its my first post", likesCount: "15" },
+    { id: 1, message: "Hi, how are you?", likesCount: 20 },
+    { id: 2, message: "Its my first post", likesCount: 15 },
   ] as Array<PostsType>,
   profile: null as ProfileType | null,
   status: "",
@@ -28,7 +28,7 @@ const profileReducer = (
       let newPost = {
         id: stateCopy.posts[stateCopy.posts.length - 1].id + 1,
         message: action.newPostText as string,
-        likesCount: "0",
+        likesCount: 0,
       };
 
       return {

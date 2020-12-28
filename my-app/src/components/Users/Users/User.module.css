@@ -35,3 +35,7 @@
   color: goldenrod;
   font-size: large;
 }
+
+button {
+  color: black !important;
+}

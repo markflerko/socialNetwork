@@ -5,3 +5,4 @@
 5. тесты дед аутсайд
 6. //@ts-ignore
 7. any types clean
+8. hashrouter руинит диалоги (href)

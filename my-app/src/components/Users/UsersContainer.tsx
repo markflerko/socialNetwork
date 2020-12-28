@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import preloader from "../../assets/img/preloader.svg";
 import { AppStateType } from "../../redux/reduxStore";
 import {
+  FilterType,
   followUser,
   requestUsers,
   // setCurrentPage,
@@ -15,6 +16,7 @@ import {
   getPageSize,
   getTotalUsersCount,
   getUsers,
+  getUserFilter,
 } from "../../redux/usersSelectors";
 import { UserType } from "../../types/types";
 import Users from "./Users/Users";
@@ -26,13 +28,14 @@ type MapStateToPropsType = {
   currentPage: number;
   followingProgress: Array<number>;
   isFetching: boolean;
+  filter: FilterType
 };
 
 type MapDispatchToPropsType = {
   unfollowUser: (id: number) => void;
   followUser: (id: number) => void;
   // setCurrentPage: (pageNumber: number) => void;
-  requestUsers: (currentPage: number, pageSize: number) => void;
+  requestUsers: (currentPage: number, pageSize: number, filter: FilterType) => void;
 };
 
 type OwnPropsType = {
@@ -43,13 +46,20 @@ type PropsType = MapStateToPropsType & MapDispatchToPropsType & OwnPropsType;
 
 class UsersContainer extends React.Component<PropsType> {
   componentDidMount() {
-    this.props.requestUsers(this.props.currentPage, this.props.pageSize);
+    this.props.requestUsers(this.props.currentPage, this.props.pageSize, this.props.filter);
   }
 
   onPageChanged = (pageNumber: number) => {
     // this.props.setCurrentPage(pageNumber);
-    this.props.requestUsers(pageNumber, this.props.pageSize);
+    const {filter} = this.props;
+    this.props.requestUsers(pageNumber, this.props.pageSize, filter);
   };
+
+  onFilterChanged = (filter: FilterType) => {
+    const {pageSize} = this.props;
+
+    this.props.requestUsers(1, pageSize, filter)
+  }
 
   render() {
     return (
@@ -65,6 +75,7 @@ class UsersContainer extends React.Component<PropsType> {
           unfollowUser={this.props.unfollowUser}
           followUser={this.props.followUser}
           onPageChanged={this.onPageChanged}
+          onFilterChanged={this.onFilterChanged}
         />
       </>
     );
@@ -79,6 +90,7 @@ let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     currentPage: getCurrentPage(state),
     followingProgress: getFollowingProgress(state),
     isFetching: getIsFetching(state),
+    filter: getUserFilter(state),
   };
 };
 

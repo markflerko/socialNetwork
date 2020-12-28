@@ -45,7 +45,6 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
               <Redirect from={"/"} to={"/Profile"} />
             </Route>
             <Route path="/Profile/:userId?">
-              {/* @ts-ignore */}
               <ProfileContainer />
             </Route>
             <Route path="/Dialogs/:convnId?">{() => <SuspendenedDialogs />}</Route>

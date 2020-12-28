@@ -1,9 +1,10 @@
+import { ProfileType, PostsType } from './../types/types';
 import profileReducer, { actions } from "./profileReducer";
 
 let state = {
   posts: [
-    { id: 1, message: "Hi, how are you?", likesCount: "20" },
-    { id: 2, message: "Its my first post", likesCount: "15" },
+    { id: 1, message: "Hi, how are you?", likesCount: 20 },
+    { id: 2, message: "Its my first post", likesCount: 15 },
   ] as Array<PostsType>,
   profile: null as ProfileType | null,
   status: "",

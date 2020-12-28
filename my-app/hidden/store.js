@@ -10,8 +10,8 @@ let store = {
   _state: {
     profilePage: {
       posts: [
-        { id: 1, message: 'Hi, how are you?', likesCount: '20' },
-        { id: 2, message: 'Its my first post', likesCount: '15' },
+        { id: 1, message: 'Hi, how are you?', likesCount: 20 },
+        { id: 2, message: 'Its my first post', likesCount: 20 },
       ],
       newPostText: 'markus lucius castus',
     },
