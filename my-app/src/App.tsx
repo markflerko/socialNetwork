@@ -4,13 +4,13 @@ import { BrowserRouter, HashRouter, Redirect, Route, Switch } from "react-router
 import { compose } from "redux";
 import "./App.css";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import Login from "./components/Login/Login";
+import { LoginPage } from "./components/Login/Login";
 import Music from "./components/Music/Music";
 import Navbar from "./components/Navbar/Navbar";
-import News from "./components/News/News";
+import {News} from "./components/News/News";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import Settings from "./components/Settings/Settings";
-import UsersContainer from "./components/Users/UsersContainer";
+import { UserPage } from "./components/Users/UsersContainer";
 import { initializeApp } from "./redux/appReducer";
 import preloader from "../src/assets/img/preloader.svg";
 import store, { AppStateType } from "./redux/reduxStore";
@@ -49,12 +49,12 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
             </Route>
             <Route path="/Dialogs/:convnId?">{() => <SuspendenedDialogs />}</Route>
             <Route path="/Users">
-              <UsersContainer pageTitle={"Samurai"} />
+              <UserPage pageTitle={"Samurai"} />
             </Route>
             <Route path="/News" component={News} />
             <Route path="/Music" component={Music} />
             <Route path="/Settings" component={Settings} />
-            <Route path="/Login" component={Login} />
+            <Route path="/Login" component={LoginPage} />
             <Route path="*" component={() => <div>404 NOT FOUND</div>} />
           </Switch>
         </div>

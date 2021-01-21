@@ -53,7 +53,6 @@ const usersReducer = (state = initialState, action: ActionsTypes): InitialStateT
     }
 
     case 'SET_FILTER': {
-      //@ts-ignore
       return {...state, filter: action.payload}
     }
 
@@ -105,7 +104,7 @@ export const actions = {
   setFilter: (filter: FilterType) =>
     ({
       type: "SET_FILTER",
-      payload: {filter},
+      payload: filter,
     } as const),
 
   setTotalUsersCount: (totalUsersCount: number) =>

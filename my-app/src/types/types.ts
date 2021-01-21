@@ -31,4 +31,11 @@ export type UserType = {
   status: string
   photos: PhotosType
   followed: boolean
-}
+};
+export type NewsType = {
+  title: string,
+  date: string,
+  img: string,  
+  text: string,
+  id: number
+};
