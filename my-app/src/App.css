@@ -5,8 +5,8 @@ body {
 .app-wrapper {
   display: grid;
   grid-template-areas:
-    'h h'
-    'n c';
+    "h h"
+    "n c";
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
   grid-gap: 10px;
@@ -14,4 +14,27 @@ body {
 
 button {
   cursor: pointer;
+}
+
+.nav {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-area: n;
+  background-color: orange;
+  padding: 20px;
+  row-gap: 20px;
+}
+
+.item a {
+  text-decoration: none;
+}
+
+.item a.active {
+  color: black;
+}
+
+.nav__friends__img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
