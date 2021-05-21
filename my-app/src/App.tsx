@@ -76,7 +76,7 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
                     <Link to="/News">News</Link>
                   </Menu.Item>
                   <Menu.Item key="10">
-                    <Link to="/Settings">Setting</Link>
+                    <Link to="/Settings">Settings</Link>
                   </Menu.Item>
                 </SubMenu>
               </Menu>
